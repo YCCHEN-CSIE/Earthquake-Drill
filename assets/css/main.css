@@ -1,0 +1,441 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    overflow: hidden;
+    /* Hide scrollbars */
+}
+
+#container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* Maintain 16:9 aspect ratio */
+    width: 100vw;
+    height: calc(100vw * 9 / 16);
+    /* But don't exceed screen height */
+    max-height: 100vh;
+    max-width: calc(100vh * 16 / 9);
+    /* Add a semi-transparent overlay to the background */
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('https://clips.ttct.edu.tw/var/file/106/1106/msys_1106_2990378_72145.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-color 0.5s;
+}
+
+#title-image {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    width: 55%;
+    /* Increased from 40% */
+    animation: float 4s ease-in-out infinite;
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, 0px);
+    }
+
+    50% {
+        transform: translate(-50%, -20px);
+    }
+
+    100% {
+        transform: translate(-50%, 0px);
+    }
+}
+
+/* Role Selector Initial State */
+#role-selector {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+#character-switcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#role-image {
+    width: 150px;
+}
+
+.arrow {
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    padding: 0 20px;
+    opacity: 0;
+    pointer-events: none;
+    /* Block clicks when hidden */
+    transition: opacity 0.5s;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lively-button {
+    width: 320px;
+    text-align: center;
+    padding: 12px 0;
+    /* Adjust padding for fixed width */
+    font-size: 22px;
+    font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", sans-serif;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(45deg, #ff8c00, #ffc107);
+}
+
+.lively-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#start-drill-btn {
+    margin-top: 20px;
+}
+
+#description-box {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translateY(-50%);
+    width: 35%;
+    height: 400px;
+    /* Fixed height */
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    opacity: 0;
+    pointer-events: none;
+    /* Block clicks when hidden */
+    transition: opacity 0.5s;
+    display: flex;
+    flex-direction: column;
+}
+
+#description-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 10px;
+    flex-shrink: 0;
+    /* Prevent title from shrinking */
+}
+
+#description-text-container {
+    flex-grow: 1;
+    /* Take up remaining space */
+    position: relative;
+    overflow: hidden;
+}
+
+#description-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1.6;
+    white-space: pre-line;
+    /* Render newlines */
+    margin: 0;
+    transition: top 0.5s ease-in-out;
+}
+
+.desc-arrow {
+    position: absolute;
+    right: 20px;
+    font-size: 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: none;
+    /* Hidden by default */
+    z-index: 10;
+}
+
+#desc-prev-btn {
+    bottom: 70px;
+}
+
+#desc-next-btn {
+    bottom: 20px;
+}
+
+#back-to-home-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    z-index: 20;
+}
+
+#scenario-box {
+    position: absolute;
+    width: 80%;
+    height: 76%;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+    /* Shortened transition */
+}
+
+#scenario-content-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 20px;
+    /* Space for scrollbar */
+}
+
+#scenario-title {
+    text-align: center;
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    flex-shrink: 0;
+}
+
+#scenario-text {
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+#scenario-details-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+    color: #FFD700;
+}
+
+#scenario-details-list {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+#scenario-details-list b {
+    color: #87CEFA;
+    /* Light Sky Blue */
+}
+
+#scenario-footer {
+    flex-shrink: 0;
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#scenario-start-btn {
+    padding: 15px 30px;
+    font-size: 24px;
+    background-image: linear-gradient(45deg, #28a745, #218838);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* --- Dialogue System CSS --- */
+.dialogue-ui {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 50;
+}
+
+#narration-box {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px 50px;
+    border-radius: 15px;
+    max-width: 60%;
+    text-align: center;
+    font-size: 32px;
+}
+
+#character-dialogue-container {
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    display: flex;
+    align-items: flex-end;
+}
+
+#dialogue-character-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: -80px;
+    z-index: 1;
+}
+
+#dialogue-character-image {
+    height: 350px;
+    transition: transform 0.3s;
+}
+
+#dialogue-character-name {
+    background-color: rgba(8, 23, 41, 0.9);
+    color: white;
+    padding: 5px 25px;
+    border-radius: 10px;
+    border: 2px solid #66aaff;
+    font-size: 24px;
+    margin-top: -30px;
+    position: relative;
+}
+
+#dialogue-box {
+    flex-grow: 1;
+    height: 170px;
+    background-color: rgba(8, 23, 41, 0.85);
+    border: 3px solid #66aaff;
+    border-radius: 15px;
+    color: white;
+    padding: 20px;
+    padding-left: 100px;
+    font-size: 28px;
+    line-height: 1.5;
+    box-shadow: 0 0 15px rgba(102, 170, 255, 0.5);
+}
+
+#choice-container {
+    position: absolute;
+    bottom: 35%;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    width: auto;
+}
+
+.choice-button {
+    padding: 15px 30px;
+    font-size: 22px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    min-width: 400px;
+}
+
+.choice-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
+}
+
+/* --- End Dialogue System CSS --- */
+
+/* Selection Mode - Activated by JS */
+#container.selection-mode #role-selector {
+    left: 30%;
+}
+
+#container.selection-mode #title-image {
+    top: 2%;
+}
+
+#container.selection-mode #start-drill-btn {
+    display: none;
+}
+
+#container.selection-mode .arrow,
+#container.selection-mode #description-box {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Drill Mode - Activated by JS */
+#container.drill-mode #title-image,
+#container.drill-mode #role-selector {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#container.drill-mode #back-to-home-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#container.drill-mode #scenario-box {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0.5s;
+}
+
+#declare {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: black;
+    z-index: 100;
+}

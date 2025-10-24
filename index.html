@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防災教具</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+
+<body>
+    <div id="container">
+        <img id="title-image" src="/assets/images/title.png" alt="Title">
+        <div id="role-selector">
+            <div id="character-switcher">
+                <button id="arrow-left" class="arrow">&lt;</button>
+                <img id="role-image" src="./assets/images/學生_hat.png" alt="Current Role">
+                <button id="arrow-right" class="arrow">&gt;</button>
+            </div>
+            <div id="button-container">
+                <button id="role-button" class="lively-button">選擇身分</button>
+                <button id="start-drill-btn" class="lively-button">進入演練</button>
+            </div>
+        </div>
+
+        <div id="description-box">
+            <h2 id="description-title"></h2>
+            <div id="description-text-container">
+                <p id="description-text"></p>
+            </div>
+            <button id="desc-prev-btn" class="desc-arrow">▲</button>
+            <button id="desc-next-btn" class="desc-arrow">▼</button>
+        </div>
+
+        <div id="scenario-box">
+            <h2 id="scenario-title">演練情境</h2>
+            <div id="scenario-content-wrapper">
+                <p id="scenario-text">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;民國114年9月21日9時21分，台東縣海端鄉發生5級地震，地震持續60秒。學校上課期間發生規模6.8，震度5級的地震，廚房因強震發生時廚工正在烹煮午餐的食物，發生用火意外，教室內些取物品掉落，學校建物無損。地震過後學校有一名特殊生在疏散過程中被東西砸中受傷摔倒，導致骨折無法繼續行動，搜救過程中因情緒起伏較大，需要輔導老師在一旁安慰心情，才較好進行擔架固定之動作(三甲教室內)。
+                </p>
+                <h3 id="scenario-details-title">詳細資訊</h3>
+                <ul id="scenario-details-list">
+                    <li><b>發生時段：</b>上課中</li>
+                    <li><b>地震資訊：</b>芮氏規模6.8，震源位置位在北緯21.14°，東經121.2°（臺東縣政府東北偏北方42.7公里），最大震度5級強，地震深度7.8公里，搖晃時間60秒</li>
+                    <li><b>地震災害：</b>人感到驚嚇恐慌，難以走動。大量未固定物品傾倒掉落，傢俱移動或翻倒，耐震較差磚牆可能損壞或崩塌。</li>
+                    <li><b>震度影響：</b>電力正常</li>
+                    <li><b>應變啟動：</b>哨子、電子哨、廣播器在身旁時</li>
+                    <li><b>複合災害：</b>廚房因地震發生時進行烹煮程序引發火災、廚房因地震發生時進行烹煮程序引發火災</li>
+                    <li><b>雨天備案：</b>維持全規模演練(攜雨具)</li>
+                </ul>
+            </div>
+            <div id="scenario-footer">
+                <button id="scenario-start-btn">開始演練</button>
+            </div>
+        </div>
+
+        <!-- Dialogue System -->
+        <div id="narration-box" class="dialogue-ui">
+            <p id="narration-text-p"></p>
+        </div>
+        <div id="character-dialogue-container" class="dialogue-ui">
+            <div id="dialogue-character-info">
+                <img id="dialogue-character-image" src="">
+                <h3 id="dialogue-character-name"></h3>
+            </div>
+            <div id="dialogue-box">
+                <p id="dialogue-text"></p>
+            </div>
+        </div>
+        <div id="choice-container" class="dialogue-ui"></div>
+
+        <audio id="typewriter-sound" src="./assets/media/打字聲.mp3" loop></audio>
+
+        <button id="back-to-home-btn">返回首頁</button>
+    </div>
+
+    <div id="declare">演練依據114學年度上學期臺東縣海端鄉初來國民小學防災演練腳本</div>
+    <script src="./assets/js/main.js"></script>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
